@@ -53,6 +53,8 @@ app.use(cors());
 app.use((c, next) => sentry({ environment: c.env.ENVIRONMENT })(c, next));
 
 app.use('/spotify/*', async (c, next) => {
+  console.log('hello there');
+
   c.set('spotify', await getSpotifyClient(c.env));
 
   await next();
